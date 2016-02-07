@@ -12,6 +12,6 @@ tip = float(input("What do you want to tip? (in %)"))
 total = (meal+(meal*tax/100))*(1+(tip/100))
 
 # Include price with exactly 6 numbers after the decimal
-print("The price you need to pay is: $ %.6f.")% total
+print("The price you need to pay is: $%.6f.")% total
 
 
