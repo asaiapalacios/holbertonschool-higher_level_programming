@@ -1,4 +1,4 @@
-var https = request('https');
+var https = require('https');
 
 var options = {
     hostname: 'api.github.com',
