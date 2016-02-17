@@ -22,7 +22,7 @@ function streamToString(stream, cb) {
 
 var req = https.request(options, (res) => {
     streamToString(res, function(jsonString) {
-        // console.log(typeof jsonString); //                                                     
+        // console.log(typeof jsonString); <--Will print "string" //                                                     
         fs.writeFile("/tmp/17", jsonString, function(err) {
             if(err) {
                 return console.log(err);
