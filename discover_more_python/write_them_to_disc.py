@@ -1,5 +1,5 @@
-import urllib2
-import os.path
+import urllib2 # Library to access Request function 
+import os.path 
 
 request_headers = {
   'User-Agent': 'Holberton_School',
@@ -11,9 +11,9 @@ stars&order=desc'
 req = urllib2.Request(githuburl, headers=request_headers)
 response = urllib2.urlopen(req)
 
-# print response.read()
+#print response.read()
 
-if os.path.exists("/tmp/17"):
+if os.path.exists("/tmp/17"): # If statement to truncate (empty file) if file exists
     f = open("/tmp/17", "w")
     f.truncate()
     f.close()

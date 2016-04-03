@@ -8,5 +8,5 @@ request_headers = {
 githuburl = 'https://api.github.com/search/repositories?q=language:python&sort=stars&order=desc'
 
 req = urllib2.Request(githuburl, headers=request_headers)
-response = urllib2.urlopen(req)
-print response.read()
+response = urllib2.urlopen(req) # Call is made
+print response.read() # Print respones in standard output
