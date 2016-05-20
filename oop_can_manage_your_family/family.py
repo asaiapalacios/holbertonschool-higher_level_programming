@@ -2,7 +2,7 @@
 family.py script describes a Person Class with required specs
 '''
 
-class Person:
+class Person():
 
     EYES_COLORS = ["Blue", "Green", "Brown"]
     GENRES = ["Female", "Male"]
@@ -26,7 +26,7 @@ class Person:
         def get_first_name(self):
             return self.__first_name
 
-        #Exceptions
+        #Initializing and exceptions
         if type(id) < 0 or type(id) is not int:
             raise Exception("id is not an integer")
         self.__id = id
@@ -49,3 +49,72 @@ class Person:
 
         #Public attribute
         self.last_name = "to be determined"
+
+        Return a string with first_name & last_name attached by a space
+        def __str__(self):
+            return "%s %s" % (self.__first_name, self.last_name)
+
+        #Check if Person is male
+        def is_male(self):
+            if self.__genre == "Male":
+                return True
+
+        #Return the current age in year based on DOB and the date
+        def age(self):
+            today = [5, 20, 2016]
+            return today[2] - self.__date_of_birth[2] - ((today[0], today[1]) < (self.__date_of_birth[1], self.__date_of_birth[0]))
+
+        #Comparators
+        def __gt__(self,other):
+            return self.age() > other.age()
+        def __ge__(self, other):
+            return self.age() >= other.age()
+        def __lt__(self, other):
+            return self.age() < other.age()
+        def __le__(self, other):
+            return self.age() <= other.age()
+        def __eq__(self, other):
+            return self.age() == other.age()
+        def __ne__(self, other):
+            return self.age() != other.age()
+
+#Child classes of Person
+class Baby(Person):
+    def can_run(self):
+        return False
+    def need_help(self):
+        return True
+    def is_young(self):
+        return True
+    def can_vote(self):
+        return False
+
+class Tenager(Person):
+    def can_run(self):
+        return True
+    def need_help(self):
+        return False
+    def is_young(self):
+        return True
+    def can_vote(self):
+        return False
+
+class Adult(Person):
+    def can_run(self):
+        return True
+    def need_help(self):
+        return False
+    def is_young(self):
+        return False
+    def can_vote(self):
+        return True
+
+class Senior(Person):
+    def can_run(self):
+        return False
+    def need_help(self):
+        return True
+    def is_young(self):
+        return False
+    def can_vote(self):
+        return True
