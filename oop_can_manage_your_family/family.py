@@ -1,30 +1,15 @@
 '''
 family.py script describes a Person Class with required specs
 '''
+import json
 
 class Person():
 
     EYES_COLORS = ["Blue", "Green", "Brown"]
     GENRES = ["Female", "Male"]
-    
+
     #Init method used to initialize an instance
-    def __init_(self, id, first_name, date_of_birth, genre, eyes_color):
-        
-        #Getter of id, eyes_color, genre, date_of_birth, first_name
-        def get_id(self):
-            return self.__id
-                        
-        def get_eyes_color(self):
-            return self.__eyes_color
-
-        def get_genre(self):
-            return self.__genre
-
-        def get_date_of_birth(self):
-            return self.__date_of_birth
-
-        def get_first_name(self):
-            return self.__first_name
+    def __init__(self, id, first_name, date_of_birth, genre, eyes_color):
 
         #Initializing and exceptions
         if type(id) < 0 or type(id) is not int:
@@ -35,8 +20,8 @@ class Person():
             raise Exception("string is not a string")
         self.__first_name = first_name
 
-        if type(date_of_birth) not in list[int]:
-            raise Exception("date_of_birth is not a valid date")
+        if(len(date_of_birth) is not 3 and all(isinstance(item, int) for item in date_of_birth)):
+           raise Exception("date_of_birth is not a valid date")
         self.__date_of_birth = date_of_birth
 
         if type(genre) is not str and type(genre) not in Person.GENRES:
@@ -50,33 +35,49 @@ class Person():
         #Public attribute
         self.last_name = "to be determined"
 
-        Return a string with first_name & last_name attached by a space
-        def __str__(self):
-            return "%s %s" % (self.__first_name, self.last_name)
+    #Getter of id, eyes_color, genre, date_of_birth, first_name
+    def get_id(self):
+        return self.__id
 
-        #Check if Person is male
-        def is_male(self):
-            if self.__genre == "Male":
-                return True
+    def get_eyes_color(self):
+        return self.__eyes_color
 
-        #Return the current age in year based on DOB and the date
-        def age(self):
-            today = [5, 20, 2016]
-            return today[2] - self.__date_of_birth[2] - ((today[0], today[1]) < (self.__date_of_birth[1], self.__date_of_birth[0]))
+    def get_genre(self):
+        return self.__genre
 
-        #Comparators
-        def __gt__(self,other):
-            return self.age() > other.age()
-        def __ge__(self, other):
-            return self.age() >= other.age()
-        def __lt__(self, other):
-            return self.age() < other.age()
-        def __le__(self, other):
-            return self.age() <= other.age()
-        def __eq__(self, other):
-            return self.age() == other.age()
-        def __ne__(self, other):
-            return self.age() != other.age()
+    def get_date_of_birth(self):
+        return self.__date_of_birth
+
+    def get_first_name(self):
+        return self.__first_name
+
+    #Return a string with first_name & last_name attached by a space
+    def __str__(self):
+        return "%s %s" % (self.__first_name, self.last_name)
+
+    #Check if Person is male
+    def is_male(self):
+        if self.__genre == "Male":
+            return True
+
+    #Return the current age in year based on DOB and the date
+    def age(self):
+        today = [5, 20, 2016]
+        return today[2] - self.__date_of_birth[2] - ((today[0], today[1]) < (self.__date_of_birth[1], self.__date_of_birth[0]))
+
+    #Overloading methods which support comparison operators
+    def __gt__(self, other):
+        return self.age() > other.age()
+    def __ge__(self, other):
+        return self.age() >= other.age()
+    def __lt__(self, other):
+        return self.age() < other.age()
+    def __le__(self, other):
+        return self.age() <= other.age()
+    def __eq__(self, other):
+        return self.age() == other.age()
+    def __ne__(self, other):
+        return self.age() != other.age()
 
 #Child classes of Person
 class Baby(Person):
@@ -89,7 +90,7 @@ class Baby(Person):
     def can_vote(self):
         return False
 
-class Tenager(Person):
+class Teenager(Person):
     def can_run(self):
         return True
     def need_help(self):
