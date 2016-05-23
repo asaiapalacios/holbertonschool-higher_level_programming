@@ -34,6 +34,7 @@ class Person():
 
         #Public attribute
         self.last_name = "to be determined"
+        self.is_married_to = 0
 
     #Getter of id, eyes_color, genre, date_of_birth, first_name
     def get_id(self):
@@ -78,7 +79,27 @@ class Person():
         return self.age() == other.age()
     def __ne__(self, other):
         return self.age() != other.age()
+'''
+TASK 3
+#Return a hash describing the person by keys
+    def json(self): 
+        return { 'id': self.__id, 'eyes_color': self.__eyes_color, 'genre': self.__genre, 'date_of_birth': self.__date_of_birth, 'first_name': self.__first_name, 'last_name': self.last_name, 'is_married_to': self.is_married_to }
 
+#Set all Person attributes by value from the Hash
+    def load_from_json(self, json): 
+        self.__id = json['id'] 
+        self.__eyes_color = json['eyes_color'] 
+        self.__genre = json['genre'] 
+        self.__date_of_birth = json['date_of_birth'] 
+        self.__first_name = json['first_name'] 
+        self.last_name = json['last_name']
+        self.is_married_to = json ['is_married_to']
+
+#Implement 2 new functions (not part of any Class)
+def save_to_file(list, filename)
+
+def load_from_file(filename)
+'''
 #Child classes of Person
 class Baby(Person):
     def can_run(self):
@@ -88,6 +109,17 @@ class Baby(Person):
     def is_young(self):
         return True
     def can_vote(self):
+        return False
+    def can_be_married(self):
+        return False
+    def is_married(self):
+        if self.is_married_to != 0:
+            return True
+        else:
+            return False 
+    def divorce(self, p):
+        return False
+    def just_married_with(self, p):
         return False
 
 class Teenager(Person):
@@ -99,6 +131,17 @@ class Teenager(Person):
         return True
     def can_vote(self):
         return False
+    def can_be_married(self):
+        return False 
+    def is_married(self):
+        if self.is_married_to != 0:
+            return True
+        else:
+            return False
+    def divorce(self, p):
+        return False
+    def just_married_with(self, p):
+        return False
 
 class Adult(Person):
     def can_run(self):
@@ -109,6 +152,18 @@ class Adult(Person):
         return False
     def can_vote(self):
         return True
+    def can_be_married(self):
+        return True
+    def is_married(self):
+        if self.is_married_to != 0:
+            return True
+        else:
+            return False
+    def divorce(self, p):
+        self.is_married_to = 0
+        p.is_married_to = 0
+    #def just_married_with(self, p):
+        
 
 class Senior(Person):
     def can_run(self):
@@ -119,3 +174,14 @@ class Senior(Person):
         return False
     def can_vote(self):
         return True
+    def can_be_married(self):
+        True
+    def is_married(self):
+        if self.is_married_to != 0:
+            return True
+        else:
+            return False
+    def divorce(self, p):
+        self.is_married_to = 0
+        p.is_married_to = 0
+    #def just_married_with(self, p):
