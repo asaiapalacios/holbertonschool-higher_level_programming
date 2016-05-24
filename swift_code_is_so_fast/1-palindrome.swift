@@ -8,3 +8,5 @@ func is_palindrome(s: String) -> (Bool) {
      }
      return (revs == s)
 }
+
+
