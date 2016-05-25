@@ -1,0 +1,18 @@
+var str = "Hello, playground"
+
+class Person {
+    var firstName: String
+        var lastName: String
+	    var gender: String
+	        var age: Int
+
+    init(firstName: String, lastName: String, gender: String, age: Int) {
+            self.firstName = firstName // self expresses you are referring to the properties of the class
+	            self.lastName = lastName
+		            self.gender = gender
+			            self.age = age
+				        }
+					    func fullName() -> String {
+					            return first\_name ; last\_name
+						        }
+							}
