@@ -1,5 +1,5 @@
 '''
-Script that describes a TaskModel Class
+Python Model Script: Describes a TaskModel Class
 '''
 
 '''Class'''
