@@ -1,3 +1,6 @@
+import json
+from xml.dom.minidom import Document
+
 '''Car Class specs'''
 
 class Car():
@@ -53,6 +56,38 @@ class Car():
             'brand': self.__brand,
             'nb_doors': self.__nb_doors}
 
-    #Return a string with all information
+    #Return a string: ":name :brand (:nb_doors)"
     def __str__(self):
         return self.__name + " " + self.__brand + " " + "(" + str(self.__nb_doors) + ")"
+
+    #Update private attribute nb_doors to what is now being passed (number)
+    def set_nb_doors(self, number):
+        self.__nb_doors = number
+
+    #Return a string in JSON format (going from data structure to string, aka dump format)
+    def to_json_string(self):
+        return json.dumps(self.to_hash()) 
+
+    #Return the DOM element
+    '''Required XML is:
+        <car nb_doors = "5">
+            <name>
+                <![CDATA[Rogue]]>
+            </name>
+            <brand>
+                Nissan
+            </brand>
+        </car>'''
+    def to_xml_node(self, doc):
+        car = doc.createElement('car')
+        car.setAttribute('nb_doors', str(self.__nb_doors))
+        doc.appendChild(car)
+        name = doc.createElement('name')
+        car.appendChild(name)
+        name_cdata = doc.createCDATASection(self.__name)
+        name.appendChild(name_cdata)
+        brand = doc.createElement('brand')
+        car.appendChild(brand)
+        brand_content = doc.createTextNode(self.__brand)
+        brand.appendChild(brand_content)
+        return car
