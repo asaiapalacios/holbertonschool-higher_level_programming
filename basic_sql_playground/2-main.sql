@@ -1,5 +1,5 @@
-/*Insert data into DB*/
-insert into person (first_name, last_name, age) values ('Jon', 'Snow', '26');
-insert into person (first_name, last_name, age) values ('Arya', 'Stark', '12');
-/*Display data ordered by last_name*/
-select * from Person order by last_name;
+/*Insert records in a table to add and update values*/
+INSERT INTO Person (first_name, last_name, age) VALUES ('Jon', 'Snow', '26');
+INSERT INTO Person (first_name, last_name, age) VALUES ('Arya', 'Stark', '12');
+/*Display all last_name attributes of Person table in this order (A->Z)*/
+SELECT * FROM Person ORDER BY last_name; /*Note: Ascending order by default*/

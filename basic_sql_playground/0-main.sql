@@ -1,2 +1,2 @@
-/*Script that displays the schema of all tables in database */
-.schema
+/*Display the schema of all tables in database including dumps of stat tables if they exist*/
+.fullschema
